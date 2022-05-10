@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chetting</title>
+    <link rel="stylesheet" href="chet.css">
+</head>
+<header>
+    <div class="loginBar">
+    <div class="loginBarBox">
+    <div>
+    <label>
+    아이디 :
+    <input id="id" type="text"></label>
+    <label>
+    비밀번호 :
+    <input id="pw" type="text"></label>
+    </div>
+    <div>
+    <!-- 회원가입 클릭시 join.html (회원가입 페이지)로 이동 -->
+    <a href="join.html">
+    <input type="button" value="회원가입"></a>
+    <input type="button" value="로그인" onclick="login();"></div>
+    </div>
+    </div>
+    <div class="nameBar">
+    <p>성신한 알바</p>
+    </div>
+    </header>
+
+<main>
+
+    <section class="wrapper">
+
+    <div class="chetview-container">    
+            
+            <li>
+                <span class="username">양윤영</span>
+                <span class="massage">오늘 알바 몇시야?</span>
+                <span class="time">09:18</span>
+            </li>
+
+
+
+            <div class="input-container"> 
+                <span>
+                <input type="text" name="chetting-input">
+                <button name="send-btn">전송</button>
+                </span>
+            </div>
+
+
+    </div>
+
+
+    <div class="list-container">
+            <h2>동료 목록</h2>
+            <ul>
+                <li><a href="#">김아림</a> <a href="#">스케줄</a>  <a href="#">채팅</a></li>
+                <li ><a href="#">김채은</a> <a href="#">스케줄</a>  <a href="#">채팅</a></li>
+                 <li ><a href="#">신연정</a> <a href="#">스케줄</a> <a href="#">채팅</a></li>
+                <li><a href="#">양윤영</a> <a href="#">스케줄</a> <a href="#">채팅</a></li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+</main>
+    
+</html>
