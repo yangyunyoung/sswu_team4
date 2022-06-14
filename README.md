@@ -20,6 +20,11 @@ MVC 뷰를 사용했습니다.
 ![login](https://user-images.githubusercontent.com/85981767/173534164-dc5c0073-db6f-48e7-9560-bc039b638ed3.png)
   -  회원가입시, 이메일, 이름, 비밀번호를 입력하고 가입합니다.
   ![signUp](https://user-images.githubusercontent.com/85981767/173534157-0889e1eb-b874-473c-b0d0-56f77aadebb6.png)
+  
+  회원가입이 귀찮다면 test용으로 넣은 두 계정 중 하나를 쓰셔도 됩티다.  
+ 
+  ![lazyProff](https://user-images.githubusercontent.com/85981767/173539916-a4f35b70-4ebf-4731-85b9-8a58b4804e90.png)
+
 
 - 채팅기능 사용시)
     -  로그인후, 채팅 버튼을 누릅니다.  
