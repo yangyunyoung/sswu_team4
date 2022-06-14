@@ -17,24 +17,30 @@ MVC 뷰를 사용했습니다.
 ### 사용방법
 
 - 첫 화면에서 회원가입/로그인을 합니다.  
+![login](https://user-images.githubusercontent.com/85981767/173534164-dc5c0073-db6f-48e7-9560-bc039b638ed3.png)
   -  회원가입시, 이메일, 이름, 비밀번호를 입력하고 가입합니다.
+  ![signUp](https://user-images.githubusercontent.com/85981767/173534157-0889e1eb-b874-473c-b0d0-56f77aadebb6.png)
 
 - 채팅기능 사용시)
     -  로그인후, 채팅 버튼을 누릅니다.  
     -  친구목록에 뜨는 친구를 눌러 채팅합니다.  
     -  친구가 없을 시, 친구 추가하기를 눌러 친구의 이메일로 친구 추가를 합니다.  
+    ![chat](https://user-images.githubusercontent.com/85981767/173534130-44e79a1e-53b1-4d1b-893d-b114230cb68f.png)  
     
 - 친구 캘랜더를 보고싶을 시)  
   - 친구 목록 밑 친구 캘린더 보기 리스트에서 보고싶은 친구의 캘린더를 클릭합니다.  
   - 보고싶은 친구 캘린더가 목록에 없을 시, 친구 추가를 해줍니다.  
+ 
     - 친구추가 시)  
         - 친구 이메일이 user가 아닐 시, 해당 이메일이 회원이 아니라는 뷰가 뜹니다.  
         - 친구 이메일이 이미 친구일 시, 해당 이메일이 이미 친구라는 뷰가 뜹니다.  
         - 친구 추가 완료 시, 친구 추가가 완료되었다는 뷰가 뜹니다.  
+        ![addFriend](https://user-images.githubusercontent.com/85981767/173534123-5a3214e1-a7ab-4264-90b3-e57adde0d7d3.png)
      - 친구 삭제 시)  
         - 친구 목록의 친구관리 버튼을 누릅니다.
         - 삭제하고싶은 친구를 list에서 선택합니다.
         - 제출 버튼 클릭 시, 친구가 삭제됩니다.
+        ![deleteFriend](https://user-images.githubusercontent.com/85981767/173534135-aed2710b-4a72-47bd-8590-59fbf8bbba33.png)
         
 
 - 아르바이트 추가시)  
@@ -66,6 +72,7 @@ MVC 뷰를 사용했습니다.
   - 제출 시, 해당 아르바이트의 정보가 편집됩니다.
 
 - 로그아웃 시)
+![homeIndex](https://user-images.githubusercontent.com/85981767/173534162-3dc80cce-c2c9-448c-8dfc-d536941b80ba.png)
   * 홈 화면 오른쪽의 Log out버튼을 누릅니다.  
   * 로그아웃 alert창이 뜹니다,  
   * 로그아웃 뷰가 뜹니다.   
