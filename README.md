@@ -85,7 +85,24 @@ MVC 뷰를 사용했습니다.
 - css, js 코드 위치: /public
 - controller 코드 위치: /controllers
 - sequlize 관련 각 model 코드 위치: /models
-- 
+
+## 실행 방법 (development 모드)
+
+1. 클론
+
+    ```sh
+    $ git clone https://github.com/arim-kim/realSungshinPt.git
+    ```
+2. 패키지 설치
+    ```sh
+    $ npm install
+    ```
+
+3. 프론트엔드 서버 실행
+    ```sh
+    $ node main.jsz
+    ```
+4. localhost:80 접속
 
 
 
