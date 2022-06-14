@@ -233,7 +233,7 @@ delimiter ;
 
 ## 주휴수당 계산 함수
 
-````sh
+```sh
 set global log_bin_trust_function_creators = 1;
 drop function if exists weekFunc;
 delimiter $$
@@ -247,10 +247,9 @@ end if;
 end $$
 delimiter ;
 ```
-# 월급
+## 월급 (주급 추가 → 월급 추가)
 
-주급 추가 → 월급 추가
-
+```sh
 drop trigger if exists weekMonthInsert;
 delimiter //
 create trigger weekMonthInsert
@@ -262,9 +261,11 @@ on duplicate key update
 monthlyTotal = monthlyTotal + new.weeklyTotal + new.weekPlusPay;
 end //
 delimiter ;
+```
 
-<<세금 반영>> 주급 추가 → 월급 추가
+## <<세금 반영>> 주급 추가 → 월급 추가
 
+```sh
 drop trigger if exists weekMonthInsert;
 delimiter //
 create trigger weekMonthInsert
@@ -278,11 +279,12 @@ on duplicate key update
 monthlyTotal = monthlyTotal + (100 - monthTax) / 100 * (new.weeklyTotal + new.weekPlusPay);
 end //
 delimiter ;
-
+```
 
 
 ### 주급 업데이트 → 월급 업데이트
 
+```sh
 drop trigger if exists weekMonthUpdate;
 delimiter //
 create trigger weekMonthUpdate
@@ -295,9 +297,11 @@ month = new.weekMonth,
 monthlyTotal = monthlyTotal + new.weeklyTotal + new.weekPlusPay - (old.weeklyTotal + old.weekPlusPay);
 end //
 delimiter ;
+```
 
 ### <<세금 반영>> 주급 업데이트 → 월급 업데이트
 
+```sh
 drop trigger if exists weekMonthUpdate;
 delimiter //
 create trigger weekMonthUpdate
@@ -312,11 +316,12 @@ month = new.weekMonth,
 monthlyTotal = monthlyTotal  + (100 - monthTax) / 100 * (new.weeklyTotal + new.weekPlusPay - (old.weeklyTotal + old.weekPlusPay));
 end //
 delimiter ;
+```
 
-## 삭제
+## 삭제(일정 삭제 → 일급 삭제)
 
-###일정 삭제 → 일급 삭제
 
+```sh
 drop trigger if exists schDailyDelete;
 delimiter //
 create trigger schDailyDelete
@@ -331,9 +336,11 @@ where dailyMemid = old.scdlMemId and dailyptid = old.scdlPtId and date = date(ol
 delete from daily where dailyTotal = 0;
 end //
 delimiter ;
+```
 
 ### 일정 삭제 → 업데이트된 대타시간 구하기
 
+```sh
 set global log_bin_trust_function_creators = 1;
 drop function if exists coverTimeDelete;
 delimiter $$
@@ -346,9 +353,10 @@ elseif (isCovered = 0) then return dayCoveredTime;
 end if;
 end $$
 delimiter ;
+```
 
 ### 일급 삭제 → 주급 삭제
-
+```sh
 drop trigger if exists DailyWeeklyDelete;
 delimiter //
 create trigger DailyWeeklyDelete
@@ -357,6 +365,7 @@ Begin
 delete from weekly where weeklyTotal = 0;
 end //
 delimiter ;
+```
 
 ### 일급 삭제 → 월급 삭제  
 
