@@ -103,7 +103,7 @@ MVC 뷰를 사용했습니다.
 - controller 코드 위치: /controllers
 - sequlize 관련 각 model 코드 위치: /models
 
-## 실행 방법 (development 모드)
+## 실행 방법 (development 모드) IN SSH(GCP)
 
 1. 클론
 
@@ -117,9 +117,9 @@ MVC 뷰를 사용했습니다.
 
 3. 프론트엔드 서버 실행
     ```sh
-    $ node main.jsz
+    $ node main.js
     ```
-4. localhost:80 접속
+4. 해당 GCP 외부 IP 주소 접속
 
 
 
