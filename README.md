@@ -105,6 +105,9 @@ MVC 뷰를 사용했습니다.
 ***
 
 ## MYSQL 프로시져 함수( 급여 계산 관련)
+일급, 주급, 월급 table 생성  
+
+일급 table 생성  
 ```sh
 CREATE TABLE daily (
 dailyMemId int NOT NULL,
@@ -119,7 +122,8 @@ CONSTRAINT dailyMemId FOREIGN KEY (dailyMemId) REFERENCES members (memberId),
 CONSTRAINT dailyPtId FOREIGN KEY (dailyPtId) REFERENCES parttime (parttimeId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
-
+ 
+주급 table 생성  
 ```sh
 CREATE TABLE weekly (
 weeklyMemId int NOT NULL,
@@ -137,6 +141,7 @@ CONSTRAINT weeklyPtId FOREIGN KEY (weeklyPtId) REFERENCES parttime (parttimeId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 
+월급 table 생성  
 ```sh
 CREATE TABLE monthly (
 monthlyMemId int NOT NULL,
@@ -150,9 +155,11 @@ CONSTRAINT monthlyPtId FOREIGN KEY (monthlyPtId) REFERENCES parttime (parttimeId
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
 ```
 
-# 일급
+*** 
 
-## 일급 계산 함수
+# 1. 일급
+
+## 1.1 일급 계산 함수(프로시져)
 
 ```sh
 drop procedure if exists dailyFunc;
@@ -164,7 +171,8 @@ end $$
 delimiter ;
 ```
 
-## 일정 추가 → 일급 추가
+
+## 1.2 일정 추가 → 일급 추가
 
 ```sh
 drop trigger if exists schDailyInsert;
@@ -188,9 +196,9 @@ delimiter ;
 
 ```
 
-# 주급
+# 2. 주급
 
-## 일급 삽입 → 주급 삽입
+## 2.1 일급 삽입 → 주급 삽입
 
 ```sh
 drop trigger if exists dayWeekInsert;
@@ -210,7 +218,7 @@ end //
 delimiter ;
 ```
 
-## 일급 업데이트 → 주급 업데이트
+## 2.2 일급 업데이트 → 주급 업데이트
 
 ```sh
 drop trigger if exists dayWeekUpdate;
@@ -231,7 +239,7 @@ delimiter ;
 
 ```
 
-## 주휴수당 계산 함수
+## ※주휴수당 계산 함수
 
 ```sh
 set global log_bin_trust_function_creators = 1;
@@ -247,7 +255,7 @@ end if;
 end $$
 delimiter ;
 ```
-## 월급 (주급 추가 → 월급 추가)
+## 3. 월급 (주급 추가 → 월급 추가)
 
 ```sh
 drop trigger if exists weekMonthInsert;
@@ -263,7 +271,7 @@ end //
 delimiter ;
 ```
 
-## <<세금 반영>> 주급 추가 → 월급 추가
+## 3.1 <<세금 반영>> 주급 추가 → 월급 추가
 
 ```sh
 drop trigger if exists weekMonthInsert;
@@ -282,7 +290,7 @@ delimiter ;
 ```
 
 
-### 주급 업데이트 → 월급 업데이트
+### 3.2 주급 업데이트 → 월급 업데이트
 
 ```sh
 drop trigger if exists weekMonthUpdate;
@@ -299,7 +307,7 @@ end //
 delimiter ;
 ```
 
-### <<세금 반영>> 주급 업데이트 → 월급 업데이트
+### 3.3 <<세금 반영>> 주급 업데이트 → 월급 업데이트
 
 ```sh
 drop trigger if exists weekMonthUpdate;
@@ -317,9 +325,12 @@ monthlyTotal = monthlyTotal  + (100 - monthTax) / 100 * (new.weeklyTotal + new.w
 end //
 delimiter ;
 ```
+ 
+ ***  
 
-## 삭제(일정 삭제 → 일급 삭제)
+## 삭제
 
+### 1. 일정 삭제 → 일급 삭제  
 
 ```sh
 drop trigger if exists schDailyDelete;
@@ -338,7 +349,7 @@ end //
 delimiter ;
 ```
 
-### 일정 삭제 → 업데이트된 대타시간 구하기
+### 2. 일정 삭제 → 업데이트된 대타시간 구하기
 
 ```sh
 set global log_bin_trust_function_creators = 1;
@@ -355,7 +366,7 @@ end $$
 delimiter ;
 ```
 
-### 일급 삭제 → 주급 삭제
+### 3. 일급 삭제 → 주급 삭제
 ```sh
 drop trigger if exists DailyWeeklyDelete;
 delimiter //
@@ -367,7 +378,7 @@ end //
 delimiter ;
 ```
 
-### 일급 삭제 → 월급 삭제  
+### 4.일급 삭제 → 월급 삭제  
 
 
 ```sh
@@ -380,8 +391,10 @@ delete from monthly where monthlyTotal = 0;
 end //
 delimiter ;
 ```
+***  
 
-##프로젝트 설명
+
+## 프로젝트 설명
 
 - ejs 코드 위치: /views
 - css, js 코드 위치: /public
